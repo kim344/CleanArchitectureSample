@@ -1,10 +1,12 @@
 package com.kim344.cleanarchitecturesample.views.login
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import com.kim344.cleanarchitecturesample.R
 import com.kim344.cleanarchitecturesample.base.BaseActivity
 import com.kim344.cleanarchitecturesample.databinding.ActivityLoginBinding
+import com.kim344.cleanarchitecturesample.views.search.MovieSearchActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -49,7 +51,7 @@ class LoginActivity: BaseActivity<ActivityLoginBinding>(R.layout.activity_login)
 
     private fun goMovieSearch(){
         showToast(getString(R.string.login_success_msg))
-        //startActivity()
+        startActivity(Intent(this, MovieSearchActivity::class.java))
         finish()
     }
 }

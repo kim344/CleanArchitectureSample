@@ -7,6 +7,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.kim344.cleanarchitecturesample.R
 import com.kim344.cleanarchitecturesample.views.login.LoginActivity
+import com.kim344.cleanarchitecturesample.views.search.MovieSearchActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -39,7 +40,7 @@ class SplashActivity: AppCompatActivity() {
 
     private fun goMovieSearch(){
         showToast(getString(R.string.auto_login_msg))
-        //startActivity(Intent(this, MovieSearchActivity::class.java))
+        startActivity(Intent(this, MovieSearchActivity::class.java))
         finish()
     }
 
