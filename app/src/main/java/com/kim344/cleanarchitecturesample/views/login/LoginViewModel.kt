@@ -32,6 +32,7 @@ class LoginViewModel @Inject constructor(): ViewModel() {
         } else if (id != USER_ID || pw != USER_PW){
             _loginErrorMsg.value = Unit
         } else {
+            //insertLoginUseCase.execute(true)
             _successLogin.value = Unit
         }
     }
