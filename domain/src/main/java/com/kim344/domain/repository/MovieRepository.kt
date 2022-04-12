@@ -1,6 +1,6 @@
 package com.kim344.domain.repository
 
-import com.kim344.domain.model.search.Movie
+import com.kim344.domain.search.Movie
 import io.reactivex.Flowable
 import io.reactivex.Single
 
@@ -9,11 +9,11 @@ interface MovieRepository {
         query: String
     ): Flowable<List<Movie>>
 
-    fun getLocalSearchMovie(
+    fun getLocalSearchMovies(
         query: String
     ): Flowable<List<Movie>>
 
-    fun getRemoteSearchMovie(
+    fun getRemoteSearchMovies(
         query: String
     ): Single<List<Movie>>
 

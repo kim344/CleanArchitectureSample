@@ -1,4 +1,5 @@
-package com.kim344.domain.model.search
+package com.kim344.domain.search
+
 
 data class Movie(
     val actor: String,

@@ -12,10 +12,9 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 @Module
 class UseCaseModule {
-
     @Provides
     @Singleton
-    fun provideGetLocalMovieUseCase(movieRepository: MovieRepository): GetLocalMoviesUseCase {
+    fun provideGetLocalMoviesUseCase(movieRepository: MovieRepository): GetLocalMoviesUseCase {
         return GetLocalMoviesUseCase(movieRepository)
     }
 
@@ -27,19 +26,20 @@ class UseCaseModule {
 
     @Provides
     @Singleton
-    fun provideGetMovieUseCase(movieRepository: MovieRepository): GetMoviesUseCase {
+    fun provideGetMoviesUseCase(movieRepository: MovieRepository): GetMoviesUseCase {
         return GetMoviesUseCase(movieRepository)
     }
 
     @Provides
     @Singleton
-    fun providesPagingMovieUseCase(movieRepository: MovieRepository): GetPagingMovieUseCase {
-        return GetPagingMovieUseCase(movieRepository)
+    fun provideGetPagingMoviesUseCase(movieRepository: MovieRepository): GetPagingMoviesUseCase {
+        return GetPagingMoviesUseCase(movieRepository)
     }
 
     @Provides
     @Singleton
-    fun providesInsertLoginUseCase(loginRepository: LoginRepository): InsertLoginUseCase {
+    fun provideInsertLoginUseCase(loginRepository: LoginRepository): InsertLoginUseCase {
         return InsertLoginUseCase(loginRepository)
     }
+
 }
