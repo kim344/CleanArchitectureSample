@@ -18,11 +18,11 @@ class UseCaseModule {
         return GetLocalMoviesUseCase(movieRepository)
     }
 
-    @Provides
-    @Singleton
-    fun provideGetLoginUseCase(loginRepository: LoginRepository): GetLoginUseCase {
-        return GetLoginUseCase(loginRepository)
-    }
+//    @Provides
+//    @Singleton
+//    fun provideGetLoginUseCase(loginRepository: LoginRepository): GetLoginUseCase {
+//        return GetLoginUseCase(loginRepository)
+//    }
 
     @Provides
     @Singleton
