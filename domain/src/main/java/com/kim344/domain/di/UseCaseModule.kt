@@ -2,7 +2,8 @@ package com.kim344.domain.di
 
 import com.kim344.domain.repository.LoginRepository
 import com.kim344.domain.repository.MovieRepository
-import com.kim344.domain.repository.TestRepository
+import com.kim344.domain.test.GetTestUseCase
+import com.kim344.domain.test.TestRepository
 import com.kim344.domain.usecase.*
 import dagger.Module
 import dagger.Provides
