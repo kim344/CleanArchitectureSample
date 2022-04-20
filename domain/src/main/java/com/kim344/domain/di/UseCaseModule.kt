@@ -2,8 +2,6 @@ package com.kim344.domain.di
 
 import com.kim344.domain.repository.LoginRepository
 import com.kim344.domain.repository.MovieRepository
-import com.kim344.domain.test.GetTestUseCase
-import com.kim344.domain.test.TestRepository
 import com.kim344.domain.usecase.*
 import dagger.Module
 import dagger.Provides
@@ -20,11 +18,11 @@ class UseCaseModule {
         return GetLocalMoviesUseCase(movieRepository)
     }
 
-//    @Provides
-//    @Singleton
-//    fun provideGetLoginUseCase(loginRepository: LoginRepository): GetLoginUseCase {
-//        return GetLoginUseCase(loginRepository)
-//    }
+    @Provides
+    @Singleton
+    fun provideGetLoginUseCase(loginRepository: LoginRepository): GetLoginUseCase {
+        return GetLoginUseCase(loginRepository)
+    }
 
     @Provides
     @Singleton
@@ -42,12 +40,6 @@ class UseCaseModule {
     @Singleton
     fun provideInsertLoginUseCase(loginRepository: LoginRepository): InsertLoginUseCase {
         return InsertLoginUseCase(loginRepository)
-    }
-
-    @Provides
-    @Singleton
-    fun provideGetTestUseCase(testRepository: TestRepository): GetTestUseCase {
-        return GetTestUseCase(testRepository)
     }
 
 }
