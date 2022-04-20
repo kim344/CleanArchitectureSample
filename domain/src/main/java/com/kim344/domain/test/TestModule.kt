@@ -16,4 +16,12 @@ class TestModule {
         return "TEST Value"
     }
 
+    @Provides
+    @Singleton
+    fun provideTestRepo(
+        str: String
+    ): TestRepository {
+        return TestRepositoryImpl(str)
+    }
+
 }
