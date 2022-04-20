@@ -3,11 +3,12 @@ package com.kim344.cleanarchitecturesample.views.login
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.kim344.domain.usecase.InsertLoginUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class LoginViewModel @Inject constructor(): ViewModel() {
+class LoginViewModel @Inject constructor(private val insertLoginUseCase: InsertLoginUseCase): ViewModel() {
 
     val id: MutableLiveData<String> = MutableLiveData("")
     val pw: MutableLiveData<String> = MutableLiveData("")
@@ -32,7 +33,7 @@ class LoginViewModel @Inject constructor(): ViewModel() {
         } else if (id != USER_ID || pw != USER_PW){
             _loginErrorMsg.value = Unit
         } else {
-            //insertLoginUseCase.execute(true)
+            insertLoginUseCase.execute(true)
             _successLogin.value = Unit
         }
     }
