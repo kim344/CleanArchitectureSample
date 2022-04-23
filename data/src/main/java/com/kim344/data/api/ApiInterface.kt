@@ -1,7 +1,7 @@
 package com.kim344.data.api
 
 import com.kim344.data.api.ApiClient.BASE_URL
-import com.mtjin.data.model.search.MovieResponse
+import com.kim344.data.model.MovieResponse
 import io.reactivex.Single
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
