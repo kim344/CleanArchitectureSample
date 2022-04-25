@@ -1,8 +1,13 @@
 package com.kim344.data.di
 
 import android.content.Context
-import com.kim344.data.repository.local.LoginLocalDataSource
-import com.kim344.data.repository.local.LoginLocalDataSourceImpl
+import androidx.room.Room
+import com.kim344.data.db.MovieDao
+import com.kim344.data.db.MovieDatabase
+import com.kim344.data.repository.login.local.LoginLocalDataSource
+import com.kim344.data.repository.login.local.LoginLocalDataSourceImpl
+import com.kim344.data.repository.search.local.MovieLocalDataSource
+import com.kim344.data.repository.search.local.MovieLocalDataSourceImpl
 import com.kim344.data.utils.PreferenceManager
 import dagger.Module
 import dagger.Provides
@@ -22,29 +27,29 @@ class LocalDataModule {
         return LoginLocalDataSourceImpl(preferenceManager)
     }
 
-//    @Provides
-//    @Singleton
-//    fun provideMovieLocalDataSource(movieDao: MovieDao): MovieLocalDataSource {
-//        return MovieLocalDataSourceImpl(movieDao)
-//    }
-//
-//    //room
-//    @Provides
-//    @Singleton
-//    fun provideDatabase(@ApplicationContext context: Context): MovieDatabase {
-//        return Room.databaseBuilder(
-//            context,
-//            MovieDatabase::class.java, "Movie.db"
-//        )
-//            .allowMainThreadQueries()
-//            .build()
-//    }
-//
-//    @Provides
-//    @Singleton
-//    fun provideMovieDao(movieDatabase: MovieDatabase): MovieDao {
-//        return movieDatabase.movieDao()
-//    }
+    @Provides
+    @Singleton
+    fun provideMovieLocalDataSource(movieDao: MovieDao): MovieLocalDataSource {
+        return MovieLocalDataSourceImpl(movieDao)
+    }
+
+    //room
+    @Provides
+    @Singleton
+    fun provideDatabase(@ApplicationContext context: Context): MovieDatabase {
+        return Room.databaseBuilder(
+            context,
+            MovieDatabase::class.java, "Movie.db"
+        )
+            .allowMainThreadQueries()
+            .build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideMovieDao(movieDatabase: MovieDatabase): MovieDao {
+        return movieDatabase.movieDao()
+    }
 
     // sharedPref
     @Provides

@@ -1,4 +1,4 @@
-package com.kim344.data.repository.local
+package com.kim344.data.repository.login.local
 
 import com.kim344.data.utils.PreferenceManager
 import javax.inject.Inject
