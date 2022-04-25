@@ -1,7 +1,7 @@
 package com.kim344.data.di
 
-import com.kim344.data.repository.LoginRepositoryImpl
-import com.kim344.data.repository.local.LoginLocalDataSource
+import com.kim344.data.repository.login.LoginRepositoryImpl
+import com.kim344.data.repository.login.local.LoginLocalDataSource
 import com.kim344.domain.repository.LoginRepository
 import dagger.Module
 import dagger.Provides

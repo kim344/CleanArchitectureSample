@@ -1,6 +1,6 @@
-package com.kim344.data.repository
+package com.kim344.data.repository.login
 
-import com.kim344.data.repository.local.LoginLocalDataSource
+import com.kim344.data.repository.login.local.LoginLocalDataSource
 import com.kim344.domain.repository.LoginRepository
 import javax.inject.Inject
 
