@@ -7,13 +7,13 @@ plugins {
 }
 
 android {
-    compileSdkVersion 31
+    compileSdkVersion 30
     buildToolsVersion "30.0.3"
 
     defaultConfig {
         applicationId "com.kim344.cleanarchitecturesample"
         minSdkVersion 21
-        targetSdkVersion 31
+        targetSdkVersion 30
         versionCode 1
         versionName "1.0"
 
@@ -41,9 +41,9 @@ android {
 dependencies {
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.7.0'
-    implementation 'androidx.appcompat:appcompat:1.4.1'
-    implementation 'com.google.android.material:material:1.5.0'
+    implementation "androidx.core:core-ktx:$ktxVersion"
+    implementation "androidx.appcompat:appcompat:$appcompatVersion"
+    implementation "com.google.android.material:material:$materialVersion"
     implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
@@ -60,18 +60,17 @@ dependencies {
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.8.1'
     implementation "io.reactivex.rxjava2:rxkotlin:2.3.0"
     // Room
-    implementation "androidx.room:room-runtime:2.2.6"
+    implementation "androidx.room:room-runtime:$roomVersion"
     //Gson
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     //coroutine lifecycle
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.3.0-rc01"
     //ktx extensions
-    implementation 'androidx.core:core-ktx:1.3.2'
     implementation 'androidx.fragment:fragment-ktx:1.2.5'
     implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
     // Hilt
-    implementation "com.google.dagger:hilt-android:2.35"
-    kapt "com.google.dagger:hilt-compiler:2.35"
+    implementation "com.google.dagger:hilt-android:$hiltVersion"
+    kapt "com.google.dagger:hilt-compiler:$hiltVersion"
     //multi module
     implementation project(':data')
     implementation project(':domain')
