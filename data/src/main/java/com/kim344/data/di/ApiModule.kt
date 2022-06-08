@@ -1,6 +1,7 @@
 package com.kim344.data.di
 
 import com.kim344.data.api.ApiInterface
+import com.kim344.data.api.UserApiInterface
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,5 +16,11 @@ class ApiModule {
     @Singleton
     fun provideApiInterface(): ApiInterface {
         return ApiInterface.create()
+    }
+
+    @Provides
+    @Singleton
+    fun provideUserApiInterface(): UserApiInterface {
+        return UserApiInterface.create()
     }
 }

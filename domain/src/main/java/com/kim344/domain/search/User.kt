@@ -1,12 +1,12 @@
 package com.kim344.domain.search
 
-data class GithubResponse(
+data class User(
     val avatar_url: String,
-    val bio: Any,
+    val bio: Any?,
     val blog: String,
-    val company: Any,
+    val company: Any?,
     val created_at: String,
-    val email: Any,
+    val email: Any?,
     val events_url: String,
     val followers: Int,
     val followers_url: String,
@@ -14,12 +14,12 @@ data class GithubResponse(
     val following_url: String,
     val gists_url: String,
     val gravatar_id: String,
-    val hireable: Any,
+    val hireable: Any?,
     val html_url: String,
     val id: Int,
-    val location: Any,
+    val location: Any?,
     val login: String,
-    val name: Any,
+    val name: Any?,
     val node_id: String,
     val organizations_url: String,
     val public_gists: Int,
@@ -29,7 +29,7 @@ data class GithubResponse(
     val site_admin: Boolean,
     val starred_url: String,
     val subscriptions_url: String,
-    val twitter_username: Any,
+    val twitter_username: Any?,
     val type: String,
     val updated_at: String,
     val url: String

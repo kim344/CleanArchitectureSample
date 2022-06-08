@@ -2,6 +2,7 @@ package com.kim344.cleanarchitecturesample.views.login
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.viewModels
 import com.kim344.cleanarchitecturesample.R
 import com.kim344.cleanarchitecturesample.base.BaseActivity
@@ -17,6 +18,10 @@ class LoginActivity: BaseActivity<ActivityLoginBinding>(R.layout.activity_login)
         super.onCreate(savedInstanceState)
         binding.vm = viewModel
         initViewModelCallback()
+
+        binding.ivLogo.setOnClickListener {
+            viewModel.requestUserData("kim344")
+        }
     }
 
     private fun initViewModelCallback(){
@@ -38,6 +43,13 @@ class LoginActivity: BaseActivity<ActivityLoginBinding>(R.layout.activity_login)
                 goMovieSearch()
             })
 
+            toastMsg.observe(this@LoginActivity, {
+                showToast(getString(R.string.error_msg))
+            })
+
+            userData.observe(this@LoginActivity, {
+                binding.etId.setText(it.login)
+            })
         }
     }
 

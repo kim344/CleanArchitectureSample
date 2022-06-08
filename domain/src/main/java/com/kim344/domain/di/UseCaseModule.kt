@@ -2,6 +2,7 @@ package com.kim344.domain.di
 
 import com.kim344.domain.repository.LoginRepository
 import com.kim344.domain.repository.MovieRepository
+import com.kim344.domain.repository.UserRepository
 import com.kim344.domain.usecase.*
 import dagger.Module
 import dagger.Provides
@@ -40,6 +41,12 @@ class UseCaseModule {
     @Singleton
     fun provideInsertLoginUseCase(loginRepository: LoginRepository): InsertLoginUseCase {
         return InsertLoginUseCase(loginRepository)
+    }
+
+    @Provides
+    @Singleton
+    fun provideGetUserUseCase(userRepository: UserRepository): GetUserUseCase {
+        return GetUserUseCase(userRepository)
     }
 
 }
