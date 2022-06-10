@@ -49,4 +49,10 @@ class UseCaseModule {
         return GetUserUseCase(userRepository)
     }
 
+    @Provides
+    @Singleton
+    fun provideGetRandomUserUseCase(userRepository: UserRepository): GetRandomUserUseCase {
+        return GetRandomUserUseCase(userRepository)
+    }
+
 }
