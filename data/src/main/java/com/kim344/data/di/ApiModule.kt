@@ -1,6 +1,7 @@
 package com.kim344.data.di
 
 import com.kim344.data.api.ApiInterface
+import com.kim344.data.api.RandomUserApiInterface
 import com.kim344.data.api.UserApiInterface
 import dagger.Module
 import dagger.Provides
@@ -22,5 +23,11 @@ class ApiModule {
     @Singleton
     fun provideUserApiInterface(): UserApiInterface {
         return UserApiInterface.create()
+    }
+
+    @Provides
+    @Singleton
+    fun provideRandomUserApiInterface(): RandomUserApiInterface {
+        return RandomUserApiInterface.create()
     }
 }

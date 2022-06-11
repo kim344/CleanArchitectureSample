@@ -1,9 +1,9 @@
 package com.kim344.data.mapper
 
 import com.kim344.data.model.MovieEntity
+import com.kim344.data.model.RandomUserResponse
 import com.kim344.data.model.UserResponse
-import com.kim344.domain.search.Movie
-import com.kim344.domain.search.User
+import com.kim344.domain.search.*
 
 fun mapperToMovie(movie: List<MovieEntity>): List<Movie> {
     return movie.toList().map {
@@ -54,5 +54,23 @@ fun mapperToUser(userResponse: UserResponse): User {
         userResponse.type,
         userResponse.updated_at,
         userResponse.url
+    )
+}
+
+fun mapperToRandomUser(randomUserResponse: RandomUserResponse): RandomUser {
+    return RandomUser(
+        randomUserResponse.results.toList().map {
+            Result(
+                Location(
+                    it.location.country
+                ),
+                Login(
+                    it.login.username
+                ),
+                Picture(
+                    it.picture.thumbnail
+                )
+            )
+        }
     )
 }
