@@ -5,6 +5,7 @@ data class RandomUserResponse(
 )
 
 data class Result(
+    val email: String,
     val location: Location,
     val login: Login,
     val picture: Picture,

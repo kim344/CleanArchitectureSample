@@ -21,7 +21,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CleanArchitectureSample">
-        <activity android:name=".views.splash.SplashActivity"
+        <activity android:name=".views.user.UserActivity"
             android:theme="@style/SplashTheme"
             android:exported="true">
             <intent-filter>
@@ -39,9 +39,9 @@
             android:windowSoftInputMode="adjustNothing"
             android:screenOrientation="portrait"/>
 
-        <activity android:name=".views.user.UserActivity"
-            android:screenOrientation="portrait"
-            />
+<!--        <activity android:name=".views.user.UserActivity"-->
+<!--            android:screenOrientation="portrait"-->
+<!--            />-->
 
     </application>
 

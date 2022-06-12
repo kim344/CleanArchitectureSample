@@ -61,6 +61,7 @@ fun mapperToRandomUser(randomUserResponse: RandomUserResponse): RandomUser {
     return RandomUser(
         randomUserResponse.results.toList().map {
             Result(
+                it.email,
                 Location(
                     it.location.country
                 ),
