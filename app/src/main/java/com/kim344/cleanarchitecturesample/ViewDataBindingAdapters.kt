@@ -11,7 +11,9 @@ import com.bumptech.glide.Glide
 import com.kim344.cleanarchitecturesample.utils.EndlessRecyclerViewScrollListener
 import com.kim344.cleanarchitecturesample.views.search.MovieAdapter
 import com.kim344.cleanarchitecturesample.views.search.MovieSearchViewModel
+import com.kim344.cleanarchitecturesample.views.user.UserAdapter
 import com.kim344.domain.search.Movie
+import com.kim344.domain.search.Result
 
 @BindingAdapter("htmlText")
 fun TextView.setHtmlText(html: String) {
@@ -34,6 +36,13 @@ fun RatingBar.setMovieRating(score: String) {
 fun RecyclerView.setAdapterItems(items: MutableList<Movie>?) {
     items?.let {
         (adapter as MovieAdapter).submitList(it.toMutableList())
+    }
+}
+
+@BindingAdapter("setUserItems")
+fun RecyclerView.setUserItems(items: MutableList<Result>?) {
+    items?.let {
+        (adapter as UserAdapter).submitList(it.toMutableList())
     }
 }
 

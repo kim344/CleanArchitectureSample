@@ -2,42 +2,54 @@ package com.kim344.cleanarchitecturesample.views.user
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.kim344.cleanarchitecturesample.base.BaseViewHolder
+import com.kim344.cleanarchitecturesample.R
 import com.kim344.cleanarchitecturesample.databinding.ItemUserBinding
 import com.kim344.domain.search.Result
 
 class UserAdapter(
-    var itemList: List<Result>,
-    var itemClick: ((Result) -> Unit)
-) : RecyclerView.Adapter<BaseViewHolder>() {
+    private val itemClick: ((Result) -> Unit)
+): ListAdapter<Result, UserAdapter.ViewHolder>(diffUtil) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
-        val binding = ItemUserBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return UserItemViewHolder(binding)
+    class ViewHolder(private val binding: ItemUserBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+
+        fun bind(result: Result) {
+            binding.result = result
+            binding.executePendingBindings()
+        }
     }
 
-    override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
-        holder.bind(position)
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.bind(getItem(position))
     }
 
-    override fun getItemCount(): Int = itemList.size
-
-    inner class UserItemViewHolder(var binding: ItemUserBinding) : BaseViewHolder(binding.root) {
-        override fun bind(position: Int) {
-            val context = binding.root.context
-            val userData = itemList[position]
-
-            Glide.with(context).load(userData.picture.thumbnail).into(binding.ivProfile)
-            binding.tvUserName.text = userData.login.username
-            binding.tvUserCountry.text = userData.location.country
-            binding.tvUserEmail.text = userData.email
-
-            binding.clBody.setOnClickListener {
-                itemClick.invoke(userData)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val binding: ItemUserBinding = DataBindingUtil.inflate(
+            LayoutInflater.from(parent.context),
+            R.layout.item_user,
+            parent,
+            false
+        )
+        return ViewHolder(binding).apply {
+            binding.root.setOnClickListener { view ->
+                val position = adapterPosition.takeIf { it != RecyclerView.NO_POSITION }
+                    ?: return@setOnClickListener
+                itemClick(getItem(position))
             }
         }
     }
 
+    companion object {
+        val diffUtil = object : DiffUtil.ItemCallback<Result>() {
+            override fun areContentsTheSame(oldItem: Result, newItem: Result) =
+                oldItem == newItem
+
+            override fun areItemsTheSame(oldItem: Result, newItem: Result) =
+                oldItem.email == newItem.email
+        }
+    }
 }

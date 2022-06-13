@@ -3,7 +3,6 @@ package com.kim344.cleanarchitecturesample.views.user
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.kim344.cleanarchitecturesample.R
 import com.kim344.cleanarchitecturesample.base.BaseActivity
 import com.kim344.cleanarchitecturesample.databinding.ActivityUserBinding
@@ -17,9 +16,16 @@ class UserActivity : BaseActivity<ActivityUserBinding>(R.layout.activity_user) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding.vm = viewModel
 
-        viewModel.requestRandomUserData("10")
+        //viewModel.requestRandomUserData("10")
         viewModel.requestUserData("kim344")
+
+        userAdapter = UserAdapter {
+            Log.e("TAG","Adapter Click = $it")
+        }
+
+        binding.rvMovies.adapter = userAdapter
 
         initViewModelCallback()
     }
@@ -32,16 +38,6 @@ class UserActivity : BaseActivity<ActivityUserBinding>(R.layout.activity_user) {
 
             randomUserData.observe(this@UserActivity) {
                 Log.e("TAG","RandomUser = $it")
-
-                userAdapter = UserAdapter(it.results) {
-                    // 외부 URL 호출
-                    Log.e("TAG","Item Click = $it")
-                }
-
-                binding.rvMovies.apply {
-                    layoutManager = LinearLayoutManager(binding.root.context, LinearLayoutManager.VERTICAL, false)
-                    adapter = userAdapter
-                }
             }
         }
     }
