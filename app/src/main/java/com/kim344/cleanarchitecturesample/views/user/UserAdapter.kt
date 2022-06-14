@@ -49,7 +49,7 @@ class UserAdapter(
                 oldItem == newItem
 
             override fun areItemsTheSame(oldItem: Result, newItem: Result) =
-                oldItem.email == newItem.email
+                oldItem.id.name == newItem.id.name
         }
     }
 }

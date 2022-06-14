@@ -9,6 +9,7 @@ data class Result(
     val location: Location,
     val login: Login,
     val picture: Picture,
+    val id: ID
 )
 
 data class Location(
@@ -21,4 +22,8 @@ data class Login(
 
 data class Picture(
     val thumbnail: String
+)
+
+data class ID(
+    val name: String
 )

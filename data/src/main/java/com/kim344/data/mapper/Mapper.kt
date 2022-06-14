@@ -70,6 +70,9 @@ fun mapperToRandomUser(randomUserResponse: RandomUserResponse): RandomUser {
                 ),
                 Picture(
                     it.picture.thumbnail
+                ),
+                ID(
+                    it.id.name
                 )
             )
         }

@@ -1,5 +1,7 @@
 package com.kim344.cleanarchitecturesample.views.user
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
@@ -21,13 +23,21 @@ class UserActivity : BaseActivity<ActivityUserBinding>(R.layout.activity_user) {
         //viewModel.requestRandomUserData("10")
         viewModel.requestUserData("kim344")
 
-        userAdapter = UserAdapter {
-            Log.e("TAG","Adapter Click = $it")
+        initViewModelCallback()
+        initAdapter()
+    }
+
+    private fun initAdapter(){
+        userAdapter = UserAdapter { result ->
+            Log.e("TAG","Adapter Click = $result")
+
+            val userUrl = "https://github.com/${result.id.name}"
+            Intent(Intent.ACTION_VIEW, Uri.parse(userUrl)).takeIf {
+                it.resolveActivity(packageManager) != null
+            }?.run(this::startActivity)
         }
 
         binding.rvMovies.adapter = userAdapter
-
-        initViewModelCallback()
     }
 
     private fun initViewModelCallback() {
